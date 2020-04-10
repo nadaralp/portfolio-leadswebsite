@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Portfolio Leads
+{% endblock title %}
+
+{% block content %}
+
+
+<section class="container-fluid">
+
+    <h1 class="display-4 text-center mt-5 mb-2">Portfolio Lead <span class="text-primary">Collection</span></h1>
+    <a target="_blank" href="https://www.linkedin.com/in/nadar-alpenidze-730077188/">
+        <h1 class="text-center mb-5">Nadar Alpenidze TM <span class="badge badge-secondary">:)</span></h1>
+    </a>
+    <form method="GET">
+        <div class="input-group mb-3 w-50 mx-auto">
+            <input type="text" class="form-control" name="q" placeholder="Search By Text" aria-label="Search By Text"
+                aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-primary" type="submit" id="button-addon2">Search</button>
+            </div>
+        </div>
+    </form>
+
+    {% for item in object_list %}
+    <article class="row mx-2 py-4 px-2 mb-5 border border-secondary rounded">
+        <div class="col-2">
+            <p class="text-muted">{{item.created_at}}</p>
+            <p class="text-muted d-block mt-3">Referrer lead: {{item.referrer}}</p>
+            <div class="custom-control custom-checkbox mt-5">
+                <input type="checkbox" {% if item.isAnswered %}checked{% endif %} class="custom-control-input"
+                    id="isAnswered_{{item.pk}}">
+                <label style="cursor:pointer;" class="custom-control-label pt-1" for="isAnswered_{{item.pk}}">Replied to
+                    this
+                    lead</label>
+            </div>
+        </div>
+        <div class="col-10">
+            <div class="d-flex-flex-column mb-3">
+                <strong class="text-primary">Name:</strong>
+                <p class="mt-1"> {{item.name}}</p>
+            </div>
+            <div class="d-flex-flex-column mb-3">
+                <strong class="text-primary">Email:</strong>
+                <p class="mt-1"> {{item.email}}</p>
+            </div>
+            <div class="d-flex-flex-column mb-3">
+                <strong class="text-primary">Subject:</strong>
+                <p class="mt-1"> {{item.subject}}</p>
+            </div>
+            <div class="d-flex-flex-column mb-3">
+                <strong class="text-primary">Message:</strong>
+                <p class="mt-1"> {{item.message}}</p>
+            </div>
+
+            <a href="mailto:{{item.email}}">
+                <button class="btn btn-primary btn-md mt-3">Send Reply</button>
+            </a>
+        </div>
+
+
+    </article>
+    {% endfor %}
+
+    <nav class="d-flex justify-content-center mb-5" aria-label="Page navigation example">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+
+            <li class="page-item"><a class="page-link"
+                    href="?page={{ page_obj.previous_page_number }}{% if input %}&q={{input}}{% endif %}">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link"
+                    href="?page={{ page_obj.previous_page_number }}{% if input %}&q={{input}}{% endif %}">{{ page_obj.previous_page_number }}</a>
+            </li>
+            {% endif %}
+            <li class="page-item active"><a class="page-link" href="#">{{page_obj.number}}</a></li>
+            {% if page_obj.has_next %}
+            <li class="page-item"><a class="page-link"
+                    href="?page={{page_obj.next_page_number}}{% if input %}&q={{input}}{% endif %}">{{page_obj.next_page_number}}</a>
+            </li>
+            <li class="page-item"><a class="page-link"
+                    href="?page={{page_obj.next_page_number}}{% if input %}&q={{input}}{% endif %}">Next</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</section>
+
+{% endblock content %}

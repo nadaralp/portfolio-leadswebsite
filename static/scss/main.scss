@@ -1,0 +1,18 @@
+// Bootstrap
+@import './bootstrap.scss';
+
+// Font awesome
+@import './fontawesome/all.min.css';
+
+// Reset
+@import './reset.scss';
+
+html {
+    position: relative;
+    padding-bottom: 30px;
+    min-height: 100vh;
+}
+
+body {
+    background-image: url('/static/repeater-image.png');
+}

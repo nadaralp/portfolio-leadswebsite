@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Lead Test Endpoint
+{% endblock title %}
+
+{% block content %}
+
+<form class="w-50 mx-auto pb-5" method="POST">
+    {% csrf_token %}
+    <h1 class="text-center text-primary mt-5 mb-2" style="font-size: 22px;"><strong>Test the endpoint to see if lead
+            get's added</strong></h1>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" name="name" id="name">
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email" id="email">
+    </div>
+    <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" class="form-control" name="subject" id="subject">
+    </div>
+    <div class="form-group">
+        <label for="message">Message</label>
+        <textarea class="form-control" id="Message" name="message" rows="5"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="referrer">Referrer</label>
+        <input type="text" disabled value="test" name="referrer" class="form-control" id="referrer">
+    </div>
+    <div class="custom-control custom-checkbox ">
+        <input type="checkbox" name="isAnswered" class="custom-control-input"
+            id="isAnswered">
+        <label style="cursor:pointer;" class="custom-control-label p-1 mb-2" for="isAnswered">Is Answered</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock content %}
