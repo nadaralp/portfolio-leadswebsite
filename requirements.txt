@@ -8,6 +8,7 @@ dj-database-url==0.5.0
 Django==3.0.4
 django-background-tasks==1.2.5
 django-compat==1.0.15
+django-cors-headers==3.2.1
 django-crispy-forms==1.9.0
 django-heroku==0.3.1
 django-rest-framework==0.1.0

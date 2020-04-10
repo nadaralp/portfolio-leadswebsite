@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'crispy_forms',
     'background_task',
+    'corsheaders',
     # own
     'leads',
 
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     # Add white noise to help python add static files
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -140,6 +142,14 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 # MEDIA_ROOT is the absolute filesystem path to the directory for user-uploaded files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Enabling cors
+CORS_ORIGIN_ALLOW_ALL = True
+
+# Specific white origins:
+# CORS_ORIGIN_WHITELIST = (
+#     'http//:localhost:8000',
+# )
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
