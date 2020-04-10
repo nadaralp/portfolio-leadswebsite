@@ -31,15 +31,15 @@ staticfiles
 .Python
 build/
 develop-eggs/
-dist/
-*/dist/
-**/dist/
-*/dist/*
-*/dist/**
-*/dist_css/
-**/dist_css/
-*/dist_css/*
-*/dist_css/**
+# dist/
+# */dist/
+# **/dist/
+# */dist/*
+# */dist/**
+# */dist_css/
+# **/dist_css/
+# */dist_css/*
+# */dist_css/**
 downloads/
 eggs/
 .eggs/
