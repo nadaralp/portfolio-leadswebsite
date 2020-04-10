@@ -29,7 +29,7 @@ class LeadsListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         q = self.request.GET.get('q')
-        queryset = LeadModel.objects.all()
+        queryset = LeadModel.objects.order_by('-created_at')
         if q is not None:
             queryset = queryset.filter(
                 Q(name__icontains=q) |
